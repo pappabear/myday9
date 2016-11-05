@@ -1,0 +1,17 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4.5
+    volumes:
+      - /Users/chipirek/projects/toybox/database:/var/lib/postgresql
+    ports:
+    - "5432:5432"
+  webapp:
+    build: .
+    command: ruby ./machine_start.rb
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
