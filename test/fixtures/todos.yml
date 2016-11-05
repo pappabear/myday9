@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  subject: something to do
+  due_date: <%= Date.today %>
+  recurrence: 1
+  is_complete: true
+  position: 1
+  completed_at: <%= Date.today %>
+
+two:
+  user_id: 1
+  subject: something undone
+  due_date: <%= Date.today %>
+  recurrence: 1
+  is_complete: false
+  position: 2
+

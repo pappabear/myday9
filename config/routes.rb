@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root   'static_pages#home'
+
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
@@ -7,13 +7,21 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
+  resources :users 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts,          only: [:create, :destroy]
-  resources :relationships,       only: [:create, :destroy]
+
+  resources :todos
+  get '/today',                       to: 'todos#today'
+  get '/tomorrow',                    to: 'todos#tomorrow'
+  get '/someday',                     to: 'todos#someday'
+  put '/todos/mark_complete/:id',     to: 'todos#mark_complete', as: 'mark_complete'
+  put '/todos/mark_incomplete/:id',   to: 'todos#mark_incomplete', as: 'mark_incomplete'
+  put '/todos/move_to_tomorrow/:id',  to: 'todos#move_to_tomorrow'
+  put '/todos/skip/:id',              to: 'todos#skip',  as: 'todo_skip'
+  post '/todos/set_due_date/:id',     to: 'todos#set_due_date'
+  post '/todos/sort',                 to: 'todos#sort'
+
+  root   'static_pages#home'
+
 end
