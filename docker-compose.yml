@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:9.4.5
     volumes:
-      - /Users/chipirek/projects/toybox/database:/var/lib/postgresql
+      - /Users/chipirek/projects/myday9/database:/var/lib/postgresql
     ports:
     - "5432:5432"
   webapp:

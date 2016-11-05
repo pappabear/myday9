@@ -1,7 +1,7 @@
 system('clear')
 puts
 puts ('*'*80)
-puts "Starting   BOILERPLATE   in a Docker container..."
+puts "Starting   M Y D A Y 9   in a Docker container..."
 puts ('*'*80)
 puts
 
