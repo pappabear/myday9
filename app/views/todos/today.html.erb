@@ -1,2 +1,13 @@
-<h1>Todos#today</h1>
-<p>Find me in app/views/todos/today.html.erb</p>
+<% provide(:title, 'Today') %>
+
+<h1>Today</h1>
+
+<ul class="users">
+    <% @todos.each do |todo| %>
+        <li>
+            <%= link_to todo.subject, edit_todo_path(todo) %>
+            <button type="button" class="btn btn-success btn-xs pull-right">MARK COMPLETE</button>
+        </li>
+    <% end %>
+</ul>
+
