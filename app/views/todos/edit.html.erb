@@ -12,8 +12,9 @@
             <%= f.label :due_date %>
             <%= f.text_field :due_date, class: 'form-control' %>
 
-            <%= f.label 'Is Complete?', class: "checkbox inline" do %>
-                <%= f.check_box :is_complete, class: 'form-control pull-left' %>
+            <%= f.label 'Status' %>
+            <%= f.label 'Is Complete?', class: "checkbox inline", style: 'margin-top: 3px;' do %>
+                <%= f.check_box :is_complete, style: 'width:20px;' %>
                 <span>Is Complete?</span>
             <% end %>
 
