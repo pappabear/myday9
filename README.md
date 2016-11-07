@@ -1,10 +1,10 @@
-# Rails 5 Boilerplate
+# My Day 9
 
-This is the reference implementation of the sample application for the 4th edition of [*Ruby on Rails Tutorial: Learn Web Development with Rails*](http://www.railstutorial.org/) by [Michael Hartl](http://www.michaelhartl.com/).
+Yes, the ninth iteration of my simple sandbox project.
 
 ## License
 
-All source code in the [Ruby on Rails Tutorial](http://railstutorial.org/) is available jointly under the MIT License and the Beerware License. See [LICENSE.md](LICENSE.md) for details.
+None.  This is a sandbox project.  Just tinkering.
 
 ## Getting started
 
@@ -33,3 +33,6 @@ Run the app in a local server:
 $ rails server
 ```
 
+## Thanks
+
+Using the simple lightweight datepicker from [http://www.eyecon.ro/bootstrap-datepicker/#](http://www.eyecon.ro/bootstrap-datepicker/#).
