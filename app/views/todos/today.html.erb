@@ -1,13 +1,31 @@
 <% provide(:title, 'Today') %>
 
+<% complete_items = @todos.where('is_complete = true') %>
+<% incomplete_items = @todos.where('is_complete is null or is_complete = false') %>
+
 <h1>Today</h1>
 
+<div class='list-category'><%= incomplete_items.count %> INCOMPLETE</div>
 <ul class="users">
-    <% @todos.each do |todo| %>
+    <% incomplete_items.each do |todo| %>
         <li>
-            <%= link_to todo.subject, edit_todo_path(todo) %>
-            <button type="button" class="btn btn-success btn-xs pull-right">MARK COMPLETE</button>
+            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong' %>
+            <% if todo.is_late? %>
+                <span class="label label-danger">Late</span>
+            <% end %>
+            <button type="button" class="btn btn-xs pull-right">Mark Done</button>
         </li>
     <% end %>
 </ul>
 
+<p>&nbsp;</p>
+<div class='list-category'><%= complete_items.count %> COMPLETE</div>
+<ul class="users">
+    <% complete_items.each do |todo| %>
+        <li>
+            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong', style: 'text-decoration: strikethrough;' %>
+            <button type="button" class="btn btn-xs pull-right">Mark Done</button>
+        </li>
+    <% end %>
+
+</ul>

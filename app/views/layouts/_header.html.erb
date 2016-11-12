@@ -1,28 +1,45 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "MyDay", root_path, id: "logo" %>
+    <%= link_to "MyDay", home_path, id: "logo" %>
     <nav>
+      <% if logged_in? %>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= session[:path] %> <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <%= date_select_items.html_safe %>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>  
+        </ul>
+
+    <% else %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", home_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "Today", today_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: "delete" %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
+        <li><%= link_to "Log in", login_path %></li>
+      </ul>  
+    <% end %>
+
     </nav>
   </div>
 </header>
