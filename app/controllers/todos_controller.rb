@@ -119,7 +119,7 @@ class TodosController < ApplicationController
     @item.update_attribute('is_complete', true)
     @item.save!
     @todos = determine_todos_as_determined_by_working_date
-
+    redirect_to get_path_in_context  #today_path
   end
 
 
@@ -128,6 +128,7 @@ class TodosController < ApplicationController
     @item.update_attribute('is_complete', nil)
     @item.save!
     @todos = determine_todos_as_determined_by_working_date
+    redirect_to get_path_in_context  #today_path
   end
 
 

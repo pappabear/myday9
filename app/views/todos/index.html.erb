@@ -9,11 +9,11 @@
 <ul class="users">
     <% incomplete_items.each do |todo| %>
         <li>
-            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong' %>
+            <%= link_to todo.subject, edit_todo_path(todo), class: 'lead' %>
             <% if todo.is_late? %>
                 <span class="label label-danger">Late</span>
             <% end %>
-            <button type="button" class="btn btn-xs pull-right">Mark Done</button>
+            <%= link_to 'Mark as done', mark_complete_path(todo), method: 'PUT', class: 'btn btn-xs pull-right'%>
         </li>
     <% end %>
 </ul>
@@ -23,8 +23,8 @@
 <ul class="users">
     <% complete_items.each do |todo| %>
         <li>
-            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong', style: 'text-decoration: line-through;' %>
-            <button type="button" class="btn btn-xs pull-right">Mark Done</button>
+            <%= link_to todo.subject, edit_todo_path(todo), class: 'lead', style: 'text-decoration: line-through;' %>
+            <%= link_to 'Reopen', mark_incomplete_path(todo), method: 'PUT', class: 'btn btn-xs pull-right'%>
         </li>
     <% end %>
 
