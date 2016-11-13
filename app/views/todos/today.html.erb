@@ -23,7 +23,7 @@
 <ul class="users">
     <% complete_items.each do |todo| %>
         <li>
-            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong', style: 'text-decoration: strikethrough;' %>
+            <%= link_to todo.subject, edit_todo_path(todo), class: 'strong', style: 'text-decoration: line-through;' %>
             <button type="button" class="btn btn-xs pull-right">Mark Done</button>
         </li>
     <% end %>
