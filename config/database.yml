@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: app_production
-  username: app
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  database: myday9_production
+  username: shizzle
+  password: shizzle
