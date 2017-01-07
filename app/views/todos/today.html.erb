@@ -3,7 +3,12 @@
 <% complete_items = @todos.where('is_complete = true') %>
 <% incomplete_items = @todos.where('is_complete is null or is_complete = false') %>
 
-<h1>Today</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-left"><h1>Today</h1></div>
+        <div class="pull-right" style="margin-top:35px;"><%= link_to "Add a new item", new_todo_path %></div>
+    </div>
+</div>
 
 <div class='list-category'><%= incomplete_items.count %> INCOMPLETE</div>
 <ul class="users">
