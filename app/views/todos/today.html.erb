@@ -11,9 +11,9 @@
 </div>
 
 <div class='list-category'><%= incomplete_items.count %> INCOMPLETE</div>
-<ul class="users">
+<ul class="users" id='incompleteItems'>
     <% incomplete_items.each do |todo| %>
-        <li>
+        <li id="todo_<%= todo.id %>">
             <%= link_to todo.subject, edit_todo_path(todo), class: 'lead' %>
             <% if todo.is_late? %>
                 <span class="label label-danger">Late</span>
@@ -32,5 +32,32 @@
             <%= link_to 'Reopen', mark_incomplete_path(todo), method: 'PUT', class: 'btn btn-xs pull-right'%>
         </li>
     <% end %>
-
 </ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        console.log('Setting up the page...');
+        // make the new list sortable
+        $("#incompleteItems").sortable({
+            items: 'li',
+            update: function () {
+                console.log("Sending the sorted list via ajax to the server.");
+                console.log('Data=' + $('#taskList').sortable('serialize'));
+                $.ajax({
+                    type: 'post',
+                    data: $('#incompleteItems').sortable('serialize'),
+                    dataType: 'script',
+                    complete: function (request) {
+                        console.log('Sort completed.');
+                    },
+                    url: '/todos/sort'
+                });
+            }
+        });
+        $("#incompleteItems").disableSelection();
+
+    });
+
+</script>
