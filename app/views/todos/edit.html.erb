@@ -12,12 +12,17 @@
             <%= f.label :due_date %>
             <%= f.text_field :due_date, class: 'form-control' %>
 
+            <%= f.label :recurrence %>
+            <%= f.select :recurrence, [['None', 0], ['Daily', 1], ['Weekly', 2], ['Every 2 Weeks', 3]], {}, {class: 'form-control'} %>
+
             <%= f.label 'Status' %>
             <%= f.label 'Is Complete?', class: "checkbox inline", style: 'margin-top: 3px;' do %>
                 <%= f.check_box :is_complete, style: 'width:20px;' %>
                 <span>Is Complete?</span>
             <% end %>
 
+            <hr />
+            
             <%= f.submit "Save", class: "btn btn-primary" %>
             <p>&nbsp;</p>
             <%= link_to "Skip", todo_skip_path(@todo), method: :put, class: 'btn btn-info btn-block' %>
