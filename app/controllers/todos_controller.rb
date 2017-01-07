@@ -50,11 +50,13 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     @todo.update_attributes(todo_params)
-    if params[:todo]['is_complete'].nil?
+    
+    if params[:todo]['is_complete'] == "0"
       @todo.is_complete = nil
     else
       @todo.is_complete = true
     end
+    
     @todo.user_id=current_user.id
 
     respond_to do |format|
@@ -77,7 +79,7 @@ class TodosController < ApplicationController
   def mark_complete
     @item = Todo.find(params[:id])
 
-    if @item.recurrence > 0
+    if !@item.recurrence.nil?
       new_item = Todo.new
       new_item.subject = @item.subject
       new_item.recurrence = @item.recurrence
