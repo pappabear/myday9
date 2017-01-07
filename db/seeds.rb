@@ -3,7 +3,7 @@ User.destroy_all
 
 # Users
 
-print 'Creating users...'
+puts 'Creating users...'
 
 User.create!(name:  "Chip Irek",
              email: "chip.irek@gmail.com",
@@ -13,29 +13,37 @@ User.create!(name:  "Chip Irek",
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
+puts "Creating todos..."
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now)
-end
-
-# Todos
-
-print 'Creating new todos...'
+Todo.create(:subject=>"CIO / InfoWorld",:due_date=>"2017-1-8",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"1pm staff meeting",:due_date=>"2017-01-10",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"create action plan on feedback from my approach slides",:due_date=>"2017-01-07",:recurrence=>0, :position=>3, :user_id=>User.first.id)
+Todo.create(:subject=>"Read 'Building Real-World Cloud Apps with Azure'",:due_date=>"2017-01-07",:recurrence=>0, :position=>14, :user_id=>User.first.id)
+Todo.create(:subject=>"re-start MyDay in .NET with new architecture",:due_date=>"2017-01-07",:recurrence=>0, :position=>15, :user_id=>User.first.id)
+Todo.create(:subject=>"get Salmon Oil for Molly from a vet",:due_date=>"2017-01-07",:recurrence=>0, :position=>17, :user_id=>User.first.id)
+Todo.create(:subject=>"MyDay9-RoR - test and identify remaining work",:due_date=>"2017-01-07",:recurrence=>0, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"730am take Molly to doggie daycare",:due_date=>"2017-01-11",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"print Guardian dental form",:due_date=>"2017-01-09",:recurrence=>0, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"440pm dentist",:due_date=>"2017-01-09",:recurrence=>0, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"out: return roku",:due_date=>"2017-01-07",:recurrence=>0, :position=>5, :user_id=>User.first.id)
+Todo.create(:subject=>"bath for Molly",:due_date=>"2017-01-07",:recurrence=>0, :position=>16, :user_id=>User.first.id)
+Todo.create(:subject=>"out: groceries",:due_date=>"2017-01-07",:recurrence=>0, :position=>9, :user_id=>User.first.id)
+Todo.create(:subject=>"squish",:due_date=>"2017-01-08",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"mangle",:due_date=>"2017-01-08",:recurrence=>3, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"clean apartment",:due_date=>"2017-01-13",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"put together game pc",:due_date=>"2017-01-07",:recurrence=>0, :position=>10, :user_id=>User.first.id)
+Todo.create(:subject=>"trim dog nails",:due_date=>"2017-01-07",:recurrence=>0, :position=>11, :user_id=>User.first.id)
+Todo.create(:subject=>"Rosetta Stone",:due_date=>"2017-01-07",:recurrence=>1, :position=>12, :user_id=>User.first.id)
+Todo.create(:subject=>"out: mangle",:due_date=>"2017-01-07",:recurrence=>0, :position=>6, :user_id=>User.first.id)
+Todo.create(:subject=>"out: skate sharpening",:due_date=>"2017-01-07",:recurrence=>0, :position=>7, :user_id=>User.first.id)
+Todo.create(:subject=>"out: buy exercise equipment",:due_date=>"2017-01-07",:recurrence=>0, :position=>8, :user_id=>User.first.id)
+Todo.create(:subject=>"8am Exec Team catch-up",:due_date=>"2017-01-12",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"drycleaning",:due_date=>"2017-01-07",:recurrence=>0, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"long walk for Molly",:due_date=>"2017-01-07",:recurrence=>2, :position=>13, :user_id=>User.first.id)
+Todo.create(:subject=>"1145am Severyn skate",:due_date=>"2017-01-13",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"long walk for Molly",:due_date=>"2017-01-08",:recurrence=>2, :position=>1, :user_id=>User.first.id)
+Todo.create(:subject=>"catch-up email",:due_date=>"2017-01-08",:recurrence=>2, :position=>4, :user_id=>User.first.id)
+Todo.create(:subject=>"6am exercise",:due_date=>"2017-01-07",:recurrence=>1, :position=>4, :user_id=>User.first.id)
 
 Todo.create(:subject=>'1 due today',:due_date=>Date.today,:recurrence=>0, :user_id=>User.first.id)
 Todo.create(:subject=>'2 completed today',:due_date=>Date.today,:recurrence=>0, :is_complete=>true, :user_id=>User.first.id)
