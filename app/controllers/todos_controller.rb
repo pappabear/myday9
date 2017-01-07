@@ -7,9 +7,9 @@ class TodosController < ApplicationController
   def today
     session[:working_date] = Date.today.strftime("%m/%d/%Y")
     @todo = Todo.new
-    @todos = Todo.where('user_id=?', current_user.id)
-                 .where('(is_complete is null and due_date<?) or (due_date=?)', Date.today, Date.today)
-                 .order('is_complete desc').order('position')
+    @todos = Todo.where("user_id=?", current_user.id)
+                 .where("(is_complete is null and due_date<?) or (is_complete = 'f' and due_date<?) or (due_date=?)", Date.today, Date.today, Date.today)
+                 .order("is_complete desc").order("position")
     session[:path] = 'Today'
   end
 
